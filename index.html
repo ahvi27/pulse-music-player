@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0718" />
+    <title>Pulse — TypeScript Music Player</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Pulse home">
+          <span class="brand-mark">♪</span>
+          <span>Pulse</span>
+        </a>
+        <label class="upload-button" for="music-upload">
+          <span>＋</span> Add music
+        </label>
+        <input id="music-upload" type="file" accept="audio/*" multiple hidden />
+      </header>
+
+      <section class="player-card">
+        <div class="artwork" id="artwork" aria-label="Album artwork">
+          <span id="artwork-letter">P</span>
+          <div class="artwork-shine"></div>
+        </div>
+
+        <div class="player-content">
+          <p class="eyebrow">NOW PLAYING</p>
+          <h1 id="track-title">Your music, your moment</h1>
+          <p id="track-artist">Add audio files to begin</p>
+
+          <div class="progress-row">
+            <span id="current-time">0:00</span>
+            <input id="progress" type="range" min="0" max="100" value="0" aria-label="Track progress" />
+            <span id="duration">0:00</span>
+          </div>
+
+          <div class="controls">
+            <button id="shuffle" class="icon-button" aria-label="Toggle shuffle" title="Shuffle">⌘</button>
+            <button id="previous" class="icon-button main-control" aria-label="Previous track">◀</button>
+            <button id="play" class="play-button" aria-label="Play">▶</button>
+            <button id="next" class="icon-button main-control" aria-label="Next track">▶</button>
+            <button id="repeat" class="icon-button" aria-label="Toggle repeat" title="Repeat">↻</button>
+          </div>
+
+          <div class="volume-row">
+            <span>🔈</span>
+            <input id="volume" type="range" min="0" max="1" value="0.75" step="0.01" aria-label="Volume" />
+            <span>🔊</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="playlist-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR LIBRARY</p>
+            <h2>Playlist</h2>
+          </div>
+          <span id="track-count" class="track-count">0 tracks</span>
+        </div>
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">♫</div>
+          <h3>No music yet</h3>
+          <p>Choose songs from your device. They stay private in your browser.</p>
+          <label class="upload-button large" for="music-upload">Choose audio files</label>
+        </div>
+        <ol id="playlist" class="playlist" aria-label="Music playlist"></ol>
+      </section>
+    </main>
+
+    <audio id="audio"></audio>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
